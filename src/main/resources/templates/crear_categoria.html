@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Categoria</title>
+    <link rel="shortcut icon" href="/Images/Usco.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: Poppins, sans-serif; font-weight: 300; font-style: normal;">
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #EDEFF0">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/inventario}">
+                <img src="/Images/Usco.png" alt="Imagen de la Usco">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle-navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto" style="display: flex; align-items: center;">
+                    <li class="nav-item active"><a class="nav-link" th:href="@{/inventario}" style="color: black;">Inventario
+                        <span class="sr-only">(current)</span>
+                    </a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/listarCategorias}" style="color: black">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/login}">
+                        <img src="/Images/Logout.png" alt="Imagen Cerrar Sesión" style="width: 45px">
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="alert alert-success alert-dismissible fade show" th:if="${success != null}">
+        <label th:text="${success}"></label>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" th:if="${error != null}">
+        <label th:text="${error}"></label>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show" th:if="${warning != null}">
+        <label th:text="${warning}"></label>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+</header>
+
+<div class="container">
+
+    <br>
+    <br>
+
+    <div class="card bg-light">
+        <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+        <div class="card-body">
+
+            <form th:object="${categoria}" th:action="@{/guardar_categoria}" method="post">
+                <div class="form-group row">
+                    <label class="col-md-2" for="nombrecategoria">Categoria : </label>
+                    <input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6" id="nombrecategoria" placeholder="Ingrese el nombre de la categoria a crear" required>
+                </div>
+                <div class="card-footer bg-dark">
+                    <input type="submit" class="btn btn-outline-primary btn-sm" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
