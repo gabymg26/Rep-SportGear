@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Registro de usuarios</title>
+    <link rel="shortcut icon" href="/Images/Usco.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: Poppins, sans-serif; font-weight: 300; font-style: normal;">
+
+<br>
+<br>
+
+<div class="container-fluid h-100">
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col-sm-4 col-md-offset-3 p-4" style="background-color: #EDEFF0; border-radius: 3vh">
+            <div th:if="${param.exito}">
+                <div class="alert alert-info">Se ha registrado exitosamente a
+                    la aplicación</div>
+            </div>
+
+            <h4 class="text-center"><b>UNIVERSIDAD SURCOLOMBIANA</b></h4>
+            <h4 class="text-center"><i>SportGear</i></h4>
+            <div class="text-center">
+                <img src="/Images/Usco.png" alt="Usco Imagen" style="width: 100px; height: 100px">
+            </div>
+            <h4 class="text-center"><b>Regístrese</b></h4>
+            <form th:action="@{/registro}" method="post" th:object="${usuario}">
+
+                <div class="form-group row">
+                    <label class="control-label" for="nombre">Nombre: </label> <input
+                        id="nombre" type="text" class="form-control" th:field="*{nombre}"
+                        required autofocus="autofocus">
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label" for="apellido">Apellido: </label> <input
+                        id="apellido" class="form-control" th:field="*{apellido}"
+                        required autofocus="autofocus">
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label" for="rol">Rol: </label>
+                    <select id="rol" name="rol" class="form-control form-control-sm col-md-6">
+                        <option th:each="rol : ${roles}" th:value="${rol}" th:text="${rol}"
+                            />
+                    </select>
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label" for="codigo">Código estudiantil:</label><input id="codigo" class="form-control" th:field="*{codigo}" autofocus="autofocus">
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label" for="programa">Programa académico:</label><input id="programa" class="form-control" th:field="*{programa}" autofocus="autofocus">
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label" for="email">Correo Institucional: </label> <input
+                        id="email" type="email" class="form-control" th:field="*{email}"
+                        required autofocus="autofocus">
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label" for="telefono">Número telefónico: </label> <input
+                        id="telefono" type="number" class="form-control" th:field="*{telefono}"
+                        required autofocus="autofocus">
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label" for="password">Contraseña: </label> <input
+                        type="password" id="password" class="form-control" th:field="*{password}"
+                        required autofocus="autofocus">
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn" style="background-color: #DFD4A6; border-radius: 2vh">Registrarme</button>
+                    <br>
+                    <br>
+                    <a th:href="@{/login}"><p class="text-center"><b><i>Iniciar sesión</i></b></p></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
