@@ -66,7 +66,7 @@
     <br>
     <br>
     <div class="card bg-light">
-        <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+        <div class="card-header text-black" th:text="${titulo}" style="background-color: #DFD4A6"></div>
         <div class="card-body">
 
             <form th:object="${implemento}" th:action="@{/guardar}" method="post">
@@ -97,8 +97,8 @@
                     <input type="text" th:field="*{estado}" class="form-control form-control-sm col-md-6" id="estado" placeholder="Ingrese el Estado del Implemento " required>
                 </div>
 
-                <div class="card-footer bg-dark">
-                    <input type="submit" class="btn btn-outline-primary btn-sm" value="Guardar">
+                <div class="card-footer" style="background-color: #DFD4A6">
+                    <input type="submit" class="btn btn-outline-dark btn-sm" value="Guardar">
                 </div>
             </form>
         </div>
