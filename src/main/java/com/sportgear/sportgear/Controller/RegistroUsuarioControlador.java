@@ -2,6 +2,7 @@ package com.sportgear.sportgear.Controller;
 
 import com.sportgear.sportgear.Controller.dto.UsuarioRegistroDTO;
 import com.sportgear.sportgear.Service.UsuarioServicio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequestMapping("/registro")
 public class RegistroUsuarioControlador {
 
+    @Autowired
     private UsuarioServicio usuarioServicio;
 
     public RegistroUsuarioControlador(UsuarioServicio usuarioServicio) {
@@ -30,7 +32,7 @@ public class RegistroUsuarioControlador {
     public String mostrarFormularioDeRegistro(Model model) {
         List<String> rolesDisponibles = Arrays.asList("Estudiante", "Administrativo"); // Suponiendo que tengas esta lista de roles
         model.addAttribute("roles", rolesDisponibles);
-        return "registro";
+        return "/registro";
     }
 
     @PostMapping

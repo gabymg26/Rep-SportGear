@@ -4,18 +4,8 @@ import com.sportgear.sportgear.Model.Rol;
 
 import java.util.Collection;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
+import javax.print.DocFlavor;
 
 @Entity
 @Table(name="usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
@@ -45,9 +35,8 @@ public class Usuario {
     private Long telefono;
     private String programa;
 
-    public <T> Usuario(String nombre, String apellido, String email, String password, List<T> roleUser) {
+    public <T> Usuario(String nombre, String apellido, String email, String encode, List<T> list, Long codigo, Long telefono) {
     }
-
 
     public Long getIdUsuario() {
         return idUsuario;
