@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <title>SPORTGEAR Admin</title>
@@ -17,6 +17,10 @@
             <a class="navbar-brand" th:href="@{/inventario}">
                 <img src="/Images/Usco.png" alt="Imagen de la Usco">
             </a>
+
+            <p class="nav-item" style="color: black">
+                Bienvenid@, <span sec:authentication="principal.username"></span>
+            </p>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent"
