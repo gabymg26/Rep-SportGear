@@ -35,8 +35,9 @@ public class InventarioController {
     @GetMapping("/crear_implemento")
     public String crear(Model model){
         Inventario inventario = new Inventario();
+        inventario.setDisponibilidad(true);
         List<CatImplementos> listCategorias = catImplementosService.listarCategorias();
-        model.addAttribute("titulo","Nuevo Implemento");
+        model.addAttribute("titulo","Agregar un Implemento");
         model.addAttribute("implemento",inventario);
         model.addAttribute("categorias",listCategorias);
         return "/crear_implemento";
