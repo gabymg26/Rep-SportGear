@@ -30,7 +30,7 @@ public class CategoriaController {
     @GetMapping("/nueva_categoria")
     public String crear(Model model){
         CatImplementos catImplementos = new CatImplementos();
-        model.addAttribute("titulo","Nueva Categoria");
+        model.addAttribute("titulo","Agregar una Categoria");
         model.addAttribute("categoria",catImplementos);
         return "crear_categoria";
     }
