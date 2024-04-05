@@ -27,13 +27,17 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+
     public UsuarioServicioImpl(UsuarioRepositorio usuarioRepositorio) {
         super();
         this.usuarioRepositorio = usuarioRepositorio;
     }
 
+
     @Override
     public Usuario guardar(UsuarioRegistroDTO registroDTO, String rol) {
+
+
         // Verificar si la contraseña y el rol no son nulos
         if (registroDTO.getPassword() == null || rol == null) {
             // Manejar el caso de contraseñas o roles nulos
@@ -45,7 +49,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
                 registroDTO.getApellido(), registroDTO.getEmail(),
                 passwordEncoder.encode(registroDTO.getPassword()),
                 Arrays.asList(new Rol(rol)),
-                registroDTO.getCodigo(), registroDTO.getTelefono(), registroDTO.getPrograma());
+                registroDTO.getCodigo(), registroDTO.getTelefono(),registroDTO.getPrograma());
 
         // Guardar el usuario en la base de datos
         return usuarioRepositorio.save(usuario);

@@ -28,10 +28,10 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto" style="display: flex; align-items: center;">
-                    <li class="nav-item active"><a class="nav-link" th:href="@{/inventario}" style="color: black;">Inventario
+                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/inventario}">Inventario
                         <span class="sr-only">(current)</span>
                     </a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/listarCategorias}" style="color: black">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/listarCategorias}">Categorias</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/login}">
                         <img src="/Images/Logout.png" alt="Imagen Cerrar Sesión" style="width: 45px">
                     </a></li>
@@ -63,25 +63,23 @@
 
 <div class="container">
 
-    <br>
-    <br>
-    <div class="card bg-light">
-        <div class="card-header text-black" th:text="${titulo}" style="background-color: #DFD4A6"></div>
+    <div class="mt-5">
+        <div class="text-black text-center h3 font-weight-bold" th:text="${titulo}"></div>
         <div class="card-body">
 
             <form th:object="${implemento}" th:action="@{/guardar}" method="post">
                 <div class="form-group row">
                     <input type="hidden" th:field="*{id}">
-                    <label class="col-md-2" for="nombreImplemento">Nombre Implemento: </label>
-                    <input type="text" th:field="*{nombreImplemento}" class="form-control form-control-sm col-md-6" id="nombreImplemento" placeholder="Ingrese el Nombre del Implemento " required>
+                    <label class="control-label h5" for="nombreImplemento">Nombre Implemento: </label>
+                    <input type="text" th:field="*{nombreImplemento}" class="form-control" id="nombreImplemento" placeholder="Ingrese el Nombre del Implemento " required style="background-color: #DFD4A6">
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-2" for="cantidad">Cantidad: </label>
-                    <input type="number" th:field="*{cantidad}" class="form-control form-control-sm col-md-6" id="cantidad" placeholder="Ingrese la Cantidad " required>
+                    <label class="control-label h5" for="cantidad">Cantidad: </label>
+                    <input type="number" th:field="*{cantidad}" class="form-control" id="cantidad" placeholder="Ingrese la Cantidad " required style="background-color: #DFD4A6">
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-2" for="categoria">Categoria: </label>
-                    <select th:field="*{catImplementos}" class="form-control form-control-sm col-md-6" id="categoria">
+                    <label class="control-label h5" for="categoria">Categoria: </label>
+                    <select th:field="*{catImplementos}" class="form-control" id="categoria" style="background-color: #DFD4A6">
                         <option th:each="cat:${categorias}"
                                 th:value="${cat.id}"
                                 th:text="${cat.nombre}"
@@ -89,16 +87,16 @@
                     </select>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-2" for="disponibilidad">Disponible: </label>
-                    <input type="text" th:field="*{disponibilidad}" class="form-control form-control-sm col-md-6" id="disponibilidad" placeholder="Ingrese la Disponibilidad " required>
+                    <label class="control-label h5" for="disponibilidad">Disponible: </label>
+                    <input type="text" th:field="*{disponibilidad}" class="form-control" id="disponibilidad" placeholder="Ingrese la Disponibilidad " th:value="${implemento.disponibilidad}" required style="background-color: #DFD4A6">
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-2" for="estado">Estado: </label>
-                    <input type="text" th:field="*{estado}" class="form-control form-control-sm col-md-6" id="estado" placeholder="Ingrese el Estado del Implemento " required>
+                    <label class="control-label h5" for="estado">Estado: </label>
+                    <input type="text" th:field="*{estado}" class="form-control" id="estado" placeholder="Ingrese el Estado del Implemento " required style="background-color: #DFD4A6">
                 </div>
 
-                <div class="card-footer" style="background-color: #DFD4A6">
-                    <input type="submit" class="btn btn-outline-dark btn-sm" value="Guardar">
+                <div class="form-group text-center mt-5">
+                    <input type="submit" class="btn" value="Guardar" style="background-color: #DFD4A6; border-radius: 5vh">
                 </div>
             </form>
         </div>

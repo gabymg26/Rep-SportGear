@@ -31,49 +31,48 @@
             <form th:action="@{/registro}" method="post" th:object="${usuario}">
 
                 <div class="form-group row">
-                    <label class="control-label" for="nombre">Nombre: </label> <input
-                        id="nombre" type="text" class="form-control" th:field="*{nombre}"
-                        required autofocus="autofocus">
+                    <label class="control-label" for="nombre">Nombre: </label>
+                    <input id="nombre" type="text" class="form-control" th:field="*{nombre}" required autofocus="autofocus">
                 </div>
 
                 <div class="form-group row">
-                    <label class="control-label" for="apellido">Apellido: </label> <input
-                        id="apellido" class="form-control" th:field="*{apellido}"
-                        required autofocus="autofocus">
+                    <label class="control-label" for="apellido">Apellido: </label>
+                    <input id="apellido" class="form-control" th:field="*{apellido}" required autofocus="autofocus">
                 </div>
 
                 <div class="form-group row">
                     <label class="control-label" for="rol">Rol: </label>
                     <select id="rol" name="rol" class="form-control form-control-sm col-md-6">
-                        <option th:each="rol : ${roles}" th:value="${rol}" th:text="${rol}"
+                        <option th:each="rol : ${roles}"
+                                th:value="${rol}"
+                                th:text="${rol}"
                             />
                     </select>
                 </div>
 
                 <div class="form-group row">
-                    <label class="control-label" for="codigo">Código estudiantil:</label><input id="codigo" class="form-control" th:field="*{codigo}" autofocus="autofocus">
+                    <label class="control-label" for="codigo">Código estudiantil:</label>
+                    <input id="codigo" class="form-control" th:field="*{codigo}" autofocus="autofocus">
                 </div>
 
                 <div class="form-group row">
-                    <label class="control-label" for="programa">Programa académico:</label><input id="programa" class="form-control" th:field="*{programa}" autofocus="autofocus">
+                    <label class="control-label" for="programa">Programa académico:</label>
+                    <input id="programa" class="form-control" th:field="*{programa}" autofocus="autofocus">
                 </div>
 
                 <div class="form-group row">
-                    <label class="control-label" for="email">Correo Institucional: </label> <input
-                        id="email" type="email" class="form-control" th:field="*{email}"
-                        required autofocus="autofocus">
+                    <label class="control-label" for="email">Correo Institucional: </label>
+                    <input id="email" type="email" class="form-control" th:field="*{email}" required autofocus="autofocus">
                 </div>
 
                 <div class="form-group row">
-                    <label class="control-label" for="telefono">Número telefónico: </label> <input
-                        id="telefono" type="number" class="form-control" th:field="*{telefono}"
-                        required autofocus="autofocus">
+                    <label class="control-label" for="telefono">Número telefónico: </label>
+                    <input id="telefono" type="number" class="form-control" th:field="*{telefono}" required autofocus="autofocus">
                 </div>
 
                 <div class="form-group row">
-                    <label class="control-label" for="password">Contraseña: </label> <input
-                        type="password" id="password" class="form-control" th:field="*{password}"
-                        required autofocus="autofocus">
+                    <label class="control-label" for="password">Contraseña: </label>
+                    <input type="password" id="password" class="form-control" th:field="*{password}" required autofocus="autofocus">
                 </div>
 
                 <div class="form-group text-center">
