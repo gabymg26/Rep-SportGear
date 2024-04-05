@@ -11,7 +11,4 @@ public interface CatImplementosService {
     public void guadar_categoria(CatImplementos catImplementos);
 
     public CatImplementos buscarPorId(Long id);
-
-    public void eliminar(Long id);
-
 }

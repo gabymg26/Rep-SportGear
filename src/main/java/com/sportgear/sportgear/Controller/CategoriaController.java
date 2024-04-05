@@ -43,25 +43,4 @@ public class CategoriaController {
         return "redirect:/inventario";
     }
 
-    @GetMapping("/eliminarCategoria/{id}")
-    public String eliminar(@PathVariable("id")Long idCategoria, RedirectAttributes redirectAttributes){
-
-        CatImplementos catImplementos = null;
-
-        if(idCategoria > 0){
-            catImplementos = catImplementosService.buscarPorId(idCategoria);
-
-            if(catImplementos == null){
-                redirectAttributes.addFlashAttribute("error", "Atención: El Id de la Categoria no Existe!");
-                return "redirect:/listarCategorias";
-            }
-        }else {
-            redirectAttributes.addFlashAttribute("error", "Atención: El Id de la Categoria no Existe!");
-            return "redirect:/listarCategorias";
-        }
-
-        catImplementosService.eliminar(idCategoria);
-        redirectAttributes.addFlashAttribute("danger", "Categoria Eliminada Con Éxito");
-        return "redirect:/listarCategorias";
-    }
 }

@@ -31,10 +31,10 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto" style="display: flex; align-items: center;">
-                    <li class="nav-item active"><a class="nav-link" th:href="@{/inventario}" style="color: black;">Inventario
+                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/inventario}">Inventario
                         <span class="sr-only">(current)</span>
                     </a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/listarCategorias}" style="color: black">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/listarCategorias}">Categorias</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/login}">
                         <img src="/Images/Logout.png" alt="Imagen Cerrar Sesión" style="width: 45px">
                     </a></li>
@@ -64,12 +64,11 @@
 
 </header>
 
-<br>
-<div class="container text-center">
+
+<div class="container text-center mt-5">
     <h4 th:text="${titulo}"></h4>
 </div>
 
-<br>
 
 <div class="container">
 
@@ -77,8 +76,7 @@
        th:text="'Nueva Categoria'" title="Crear nueva Categoria">
     </a>
 
-    <br>
-    <br>
+    <div class="mt-5">
 
     <table class="table table-hover" >
         <thead class="thead" style="background-color: #DFD4A6">
@@ -101,21 +99,20 @@
             <td th:text="${inven.disponibilidad}"></td>
             <td th:text="${inven.estado}"></td>
             <td>
-                <a th:href="@{/editar/{id}(id=${inven.id})}" title="Editar Implemento">
-                    <img src="/Images/Edit.png" alt="Editar Implemento" style="width: 30px; height: 30px">
-                </a>
-            </td>
-            <td>
-                <a th:href="@{/eliminar/{id}(id=${inven.id})}" title="Eliminar Implemento">
-                    <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px"
-                   onclick="return confirm('Esta seguro de Eliminar al Implemento?');">
-                </a>
+                <div>
+                    <a th:href="@{/editar/{id}(id=${inven.id})}" title="Editar Implemento">
+                        <img src="/Images/Edit.png" alt="Editar Implemento" style="width: 30px; height: 30px; margin-right: 15px">
+                    </a>
+                    <a th:href="@{/eliminar/{id}(id=${inven.id})}" title="Eliminar Implemento">
+                        <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px"
+                             onclick="return confirm('Esta seguro de Eliminar al Implemento?');">
+                    </a>
+                </div>
             </td>
         </tr>
         </tbody>
     </table>
-
-
+    </div>
 </div>
 
 <div class="container">

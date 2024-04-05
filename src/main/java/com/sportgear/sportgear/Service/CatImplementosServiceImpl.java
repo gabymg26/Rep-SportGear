@@ -27,9 +27,4 @@ public class CatImplementosServiceImpl implements CatImplementosService{
     public CatImplementos buscarPorId(Long id) {
         return catImplementosRepository.findById(id).orElse(null);
     }
-
-    @Override
-    public void eliminar(Long id) {
-        catImplementosRepository.deleteById(id);
-    }
 }
