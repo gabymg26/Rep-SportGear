@@ -27,10 +27,10 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto" style="display: flex; align-items: center;">
-                    <li class="nav-item active"><a class="nav-link" th:href="@{/inventario}" style="color: black;">Inventario
+                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/inventario}">Inventario
                         <span class="sr-only">(current)</span>
                     </a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/listarCategorias}" style="color: black">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/listarCategorias}">Categorias</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/login}">
                         <img src="/Images/Logout.png" alt="Imagen Cerrar Sesión" style="width: 45px">
                     </a></li>
@@ -60,36 +60,29 @@
 
 </header>
 
-<br>
-<div class="container text-center">
+<div class="container text-center mt-5">
     <h4 th:text="${titulo}"></h4>
 </div>
 
 <div class="container">
-    <br>
-    <br>
-
-    <table class="table table-hover">
-        <thead class="thead" style="background-color: #DFD4A6">
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="cat:${categorias}">
-            <th scope="row" th:text="${cat.id}"></th>
-            <td th:text="${cat.nombre}"></td>
-            <td>
-                <a th:href="@{/eliminarCategoria/{id}(id=${cat.id})}" title="Eliminar Implemento">
-                    <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px"
-                   onclick="return confirm('Esta seguro de Eliminar la Categoria?');">
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row justify-content-center">
+        <div class="mt-5 col-md-2">
+            <table class="table table-hover">
+                <thead class="thead" style="background-color: #DFD4A6">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Categoria</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cat:${categorias}">
+                        <th scope="row" th:text="${cat.id}"></th>
+                        <td th:text="${cat.nombre}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 </body>
