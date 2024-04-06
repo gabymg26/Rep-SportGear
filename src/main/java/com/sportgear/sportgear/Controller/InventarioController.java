@@ -69,7 +69,7 @@ public class InventarioController {
         }
 
         List<CatImplementos> listCategorias = catImplementosService.listarCategorias();
-        model.addAttribute("titulo","Formulario : Editar Implemento");
+        model.addAttribute("titulo","Editar Implemento");
         model.addAttribute("implemento",inventario);
         model.addAttribute("categorias",listCategorias);
         return "/crear_implemento";
