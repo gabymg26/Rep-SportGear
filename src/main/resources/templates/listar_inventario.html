@@ -97,7 +97,7 @@
             <td th:text="${inven.cantidad}"></td>
             <td th:text="${inven.catImplementos.nombre}"></td>
             <td th:text="${inven.disponibilidad}"></td>
-            <td th:text="${inven.estado}"></td>
+            <td th:text="${inven.estado.nombreEstado}"></td>
             <td>
                 <div>
                     <a th:href="@{/editar/{id}(id=${inven.id})}" title="Editar Implemento">
