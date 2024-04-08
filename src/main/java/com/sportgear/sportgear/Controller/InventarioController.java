@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -54,7 +55,7 @@ public class InventarioController {
     public String guardar(@ModelAttribute Inventario inventario,
                           RedirectAttributes redirectAttributes){
         inventarioService.guardar(inventario);
-        redirectAttributes.addFlashAttribute("success","Implemento guardado con Exito");
+        redirectAttributes.addFlashAttribute("success","Implemento guardado con éxito");
         return "redirect:/inventario";
     }
 
@@ -67,11 +68,11 @@ public class InventarioController {
             inventario = inventarioService.buscarPorId(idInventario);
 
             if(inventario == null){
-                redirectAttributes.addFlashAttribute("error", "Atención: El Id del Implemento no Existe!");
+                redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
                 return "redirect:/inventario";
             }
         }else {
-            redirectAttributes.addFlashAttribute("error", "Atención: Error con el Id del Implemento");
+            redirectAttributes.addFlashAttribute("error", "Atención: Error con el Id del implemento");
             return "redirect:/inventario";
         }
 
@@ -93,16 +94,16 @@ public class InventarioController {
             inventario = inventarioService.buscarPorId(idInventario);
 
             if(inventario == null){
-                redirectAttributes.addFlashAttribute("error", "Atención: El Id del Implemento no Existe!");
+                redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
                 return "redirect:/inventario";
             }
         }else {
-            redirectAttributes.addFlashAttribute("error", "Atención: El Id del Implemento no Existe!");
+            redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
             return "redirect:/inventario";
         }
 
         inventarioService.eliminar(idInventario);
-        redirectAttributes.addFlashAttribute("warning", "Implemento Eliminado Con Éxito");
+        redirectAttributes.addFlashAttribute("warning", "Implemento eliminado con éxito");
         return "redirect:/inventario";
     }
 }
