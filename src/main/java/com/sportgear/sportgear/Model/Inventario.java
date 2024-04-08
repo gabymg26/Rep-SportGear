@@ -25,7 +25,9 @@ public class Inventario {
 
     private boolean disponibilidad;
 
-    private String estado;
+    @OneToOne
+    @JoinColumn(name = "idEstado")
+    private Estado estado;
 
     @Override
     public String toString() {
