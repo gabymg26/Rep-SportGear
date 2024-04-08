@@ -92,7 +92,12 @@
                 </div>
                 <div class="form-group row">
                     <label class="control-label h5" for="estado">Estado: </label>
-                    <input type="text" th:field="*{estado}" class="form-control" id="estado" placeholder="Ingrese el Estado del Implemento Ej:Excelente,Bueno.Regular,Dañado" required style="background-color: #DFD4A6">
+                    <select type="text" th:field="*{estado}" class="form-control" id="estado" required style="background-color: #DFD4A6">
+                        <option th:each="est:${estados}"
+                                th:value="${est.idEstado}"
+                                th:text="${est.nombreEstado}"
+                        />
+                    </select>
                 </div>
 
                 <div class="form-group text-center mt-5">
