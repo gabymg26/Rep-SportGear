@@ -1,10 +1,11 @@
-package com.sportgear.sportgear.Service;
+package com.sportgear.sportgear.Service.Impl;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.sportgear.sportgear.Service.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
