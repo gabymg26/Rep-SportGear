@@ -28,6 +28,9 @@
                 <img src="/Images/Usco.png" alt="Usco Imagen" style="width: 100px; height: 100px">
             </div>
             <h4 class="text-center"><b>Regístrese</b></h4>
+            <div class="alert alert-danger" th:if="${error != null}">
+                <label th:text="${error}"></label>
+            </div>
             <form th:action="@{/registro}" method="post" th:object="${usuario}">
 
                 <div class="form-group row">

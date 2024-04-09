@@ -1,6 +1,10 @@
 package com.sportgear.sportgear.Controller.dto;
 
 
+import com.sportgear.sportgear.Model.Rol;
+
+import java.util.Collection;
+
 public class UsuarioRegistroDTO {
 
     private Long id;
@@ -8,7 +12,7 @@ public class UsuarioRegistroDTO {
     private String apellido;
     private String email;
     private String password;
-    private String rol;
+    private Collection<Rol> rol;
     private Long codigo;
     private Long telefono;
     private String programa;
@@ -53,11 +57,11 @@ public class UsuarioRegistroDTO {
         this.password = password;
     }
 
-    public String getRol() {
+    public Collection<Rol> getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Collection<Rol> rol) {
         this.rol = rol;
     }
 
@@ -85,7 +89,7 @@ public class UsuarioRegistroDTO {
         this.programa = programa;
     }
 
-    public UsuarioRegistroDTO(Long id, String nombre, String apellido, String email, String password, String rol, Long codigo, Long telefono, String programa) {
+    public UsuarioRegistroDTO(Long id, String nombre, String apellido, String email, String password, Collection<Rol> rol, Long codigo, Long telefono, String programa) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
