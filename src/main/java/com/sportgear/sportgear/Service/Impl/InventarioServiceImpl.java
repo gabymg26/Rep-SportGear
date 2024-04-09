@@ -18,6 +18,10 @@ public class InventarioServiceImpl implements InventarioService{
         return (List<Inventario>) inventarioRepository.findAll() ;
     }
 
+    /**
+     *
+     * @param inventario
+     */
     @Override
     public void guardar(Inventario inventario) {
         inventarioRepository.save(inventario);

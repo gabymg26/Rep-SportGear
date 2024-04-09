@@ -13,6 +13,7 @@ public class EstadosServiceImpl implements EstadosService{
      @Autowired
      private EstadosRepository estadosRepository;
 
+
     @Override
     public List<Estado> listarEstados() {
         return (List<Estado>) estadosRepository.findAll();
