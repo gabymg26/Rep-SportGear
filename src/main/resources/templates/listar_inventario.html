@@ -14,7 +14,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #EDEFF0">
         <div class="container">
-            <a class="navbar-brand" th:href="@{/inventario}">
+            <a class="navbar-brand" th:href="@{/administrador/inventario}">
                 <img src="/Images/Usco.png" alt="Imagen de la Usco">
             </a>
 
@@ -31,10 +31,10 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto d-flex align-items-center">
-                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/inventario}">Inventario
+                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/administrador/inventario}">Inventario
                         <span class="sr-only">(current)</span>
                     </a></li>
-                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/listarCategorias}">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/administrador/listarCategorias}">Categorias</a></li>
                     <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">
                         <img src="/Images/Logout.png" alt="Imagen Cerrar Sesión" style="width: 45px">
                     </a></li>
@@ -72,7 +72,7 @@
 
 <div class="container">
 
-    <a class="btn btn-outline-primary btn-sm" th:href="@{/nueva_categoria}"
+    <a class="btn btn-outline-primary btn-sm" th:href="@{/administrador/nueva_categoria}"
        th:text="'Nueva Categoria'" title="Crear nueva Categoria">
     </a>
 
@@ -100,10 +100,10 @@
             <td th:text="${inven.estado.nombreEstado}"></td>
             <td>
                 <div>
-                    <a th:href="@{/editar/{id}(id=${inven.id})}" title="Editar Implemento">
+                    <a th:href="@{/administrador/editar/{id}(id=${inven.id})}" title="Editar Implemento">
                         <img src="/Images/Edit.png" alt="Editar Implemento" class="mr-3" style="width: 30px; height: 30px">
                     </a>
-                    <a th:href="@{/eliminar/{id}(id=${inven.id})}" title="Eliminar Implemento">
+                    <a th:href="@{/administrador/eliminar/{id}(id=${inven.id})}" title="Eliminar Implemento">
                         <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px"
                              onclick="return confirm('¿Está seguro de eliminar el implemento?');">
                     </a>
@@ -116,7 +116,7 @@
 </div>
 
 <div class="container">
-    <a th:href="@{/crear_implemento}" title="Agregar nuevo Implemento">
+    <a th:href="@{/administrador/crear_implemento}" title="Agregar nuevo Implemento">
         <img src="/Images/Add.png" alt="Agregar nuevo Implemento" style="width: 50px; height: 50px">
     </a>
 </div>

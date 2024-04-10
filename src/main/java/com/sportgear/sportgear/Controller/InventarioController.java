@@ -9,16 +9,14 @@ import com.sportgear.sportgear.Service.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Controller
+@RequestMapping("/administrador")
 public class InventarioController {
 
     @Autowired
@@ -35,7 +33,7 @@ public class InventarioController {
         List<Inventario> listadoInventario = inventarioService.listarInventario();
         model.addAttribute("titulo","Lista de Inventario");
         model.addAttribute("inventario",listadoInventario);
-        return "/listar_inventario";
+        return "listar_inventario";
     }
 
     @GetMapping("/crear_implemento")
@@ -48,7 +46,7 @@ public class InventarioController {
         model.addAttribute("implemento",inventario);
         model.addAttribute("categorias",listCategorias);
         model.addAttribute("estados",listEstados);
-        return "/crear_implemento";
+        return "crear_implemento";
     }
 
     @PostMapping("/guardar")
@@ -56,7 +54,7 @@ public class InventarioController {
                           RedirectAttributes redirectAttributes){
         inventarioService.guardar(inventario);
         redirectAttributes.addFlashAttribute("success","Implemento guardado con éxito");
-        return "redirect:/inventario";
+        return "redirect:/administrador/inventario";
     }
 
     @GetMapping("/editar/{id}")
@@ -69,11 +67,11 @@ public class InventarioController {
 
             if(inventario == null){
                 redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
-                return "redirect:/inventario";
+                return "redirect:/administrador/inventario";
             }
         }else {
             redirectAttributes.addFlashAttribute("error", "Atención: Error con el Id del implemento");
-            return "redirect:/inventario";
+            return "redirect:/administrador/inventario";
         }
 
         List<CatImplementos> listCategorias = catImplementosService.listarCategorias();
@@ -82,7 +80,7 @@ public class InventarioController {
         model.addAttribute("implemento",inventario);
         model.addAttribute("categorias",listCategorias);
         model.addAttribute("estados",listEstados);
-        return "/crear_implemento";
+        return "crear_implemento";
     }
 
     @GetMapping("/eliminar/{id}")
@@ -95,15 +93,15 @@ public class InventarioController {
 
             if(inventario == null){
                 redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
-                return "redirect:/inventario";
+                return "redirect:/administrador/inventario";
             }
         }else {
             redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
-            return "redirect:/inventario";
+            return "redirect:/administrador/inventario";
         }
 
         inventarioService.eliminar(idInventario);
         redirectAttributes.addFlashAttribute("warning", "Implemento eliminado con éxito");
-        return "redirect:/inventario";
+        return "redirect:/administrador/inventario";
     }
 }
