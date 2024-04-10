@@ -15,7 +15,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #EDEFF0">
         <div class="container">
-            <a class="navbar-brand" th:href="@{/inventario}">
+            <a class="navbar-brand" th:href="@{/administrador/inventario}">
                 <img src="/Images/Usco.png" alt="Imagen de la Usco">
             </a>
 
@@ -28,10 +28,10 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto d-flex align-items-center">
-                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/inventario}">Inventario
+                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/administrador/inventario}">Inventario
                         <span class="sr-only">(current)</span>
                     </a></li>
-                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/listarCategorias}">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/administrador/listarCategorias}">Categorias</a></li>
                     <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">
                         <img src="/Images/Logout.png" alt="Imagen Cerrar Sesión" style="width: 45px">
                     </a></li>
@@ -67,7 +67,7 @@
         <div class="text-black text-center h3 font-weight-bold" th:text="${titulo}"></div>
         <div class="card-body">
 
-            <form th:object="${implemento}" th:action="@{/guardar}" method="post">
+            <form th:object="${implemento}" th:action="@{/administrador/guardar}" method="post">
                 <div class="form-group row">
                     <input type="hidden" th:field="*{id}">
                     <label class="control-label h5" for="nombreImplemento">Nombre Implemento: </label>

@@ -21,8 +21,6 @@ import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
-
-
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -81,7 +79,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .collect(Collectors.toList());
 
         if (roles.contains("Administrativo")) {
-            return "/inventario";
+            return "/administrador/inventario";
         } else {
             // Redirige a una página predeterminada si no es un administrativo esto no es buena practica
             return "/default";
