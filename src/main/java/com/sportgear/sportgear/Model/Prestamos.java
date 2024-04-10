@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -16,16 +16,15 @@ public class Prestamos {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //Falta fecha de Inicio
-    private Date fechaPrestamo;
+    private LocalDate fechaPrestamo;
 
     @OneToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
     @OneToOne
-    @JoinColumn(name = "idImplemento")
-    private ImplementosDeportivos implementosDeportivos;
+    @JoinColumn(name = "idInventario")
+    private Inventario inventario;
 
     @Override
     public String toString() {
@@ -33,7 +32,7 @@ public class Prestamos {
                 "id=" + id +
                 ", fechaPrestamo=" + fechaPrestamo +
                 ", usuario=" + usuario +
-                ", implementosDeportivos=" + implementosDeportivos +
+                ", inventario=" + inventario +
                 '}';
     }
 }
