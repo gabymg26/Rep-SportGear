@@ -78,40 +78,40 @@
 
     <div class="mt-5">
 
-    <table class="table table-hover" >
-        <thead class="thead" style="background-color: #DFD4A6">
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nombre Implemento</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Categoría</th>
-            <th scope="col">Disponibilidad</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Opciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="inven:${inventario}">
-            <th scope="row" th:text="${inven.id}"></th>
-            <td th:text="${inven.nombreImplemento}"></td>
-            <td th:text="${inven.cantidad}"></td>
-            <td th:text="${inven.catImplementos.nombre}"></td>
-            <td th:text="${inven.disponibilidad}"></td>
-            <td th:text="${inven.estado.nombreEstado}"></td>
-            <td>
-                <div>
-                    <a th:href="@{/editar/{id}(id=${inven.id})}" title="Editar Implemento">
-                        <img src="/Images/Edit.png" alt="Editar Implemento" class="mr-3" style="width: 30px; height: 30px">
-                    </a>
-                    <a th:href="@{/eliminar/{id}(id=${inven.id})}" title="Eliminar Implemento">
-                        <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px"
-                             onclick="return confirm('¿Está seguro de eliminar el implemento?');">
-                    </a>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+        <table class="table table-hover" >
+            <thead class="thead" style="background-color: #DFD4A6">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre Implemento</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Disponibilidad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="inven:${inventario}">
+                <th scope="row" th:text="${inven.id}"></th>
+                <td th:text="${inven.nombreImplemento}"></td>
+                <td th:text="${inven.cantidad}"></td>
+                <td th:text="${inven.catImplementos.nombre}"></td>
+                <td th:text="${inven.disponibilidad}"></td>
+                <td th:text="${inven.estado.nombreEstado}"></td>
+                <td>
+                    <div>
+                        <a th:href="@{/editar/{id}(id=${inven.id})}" title="Editar Implemento">
+                            <img src="/Images/Edit.png" alt="Editar Implemento" class="mr-3" style="width: 30px; height: 30px">
+                        </a>
+                        <a th:href="@{/eliminar/{id}(id=${inven.id})}" title="Eliminar Implemento">
+                            <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px"
+                                 onclick="return confirm('¿Está seguro de eliminar el implemento?');">
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
