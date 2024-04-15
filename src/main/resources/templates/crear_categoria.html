@@ -60,9 +60,9 @@
 </header>
 
 <div class="container">
-    <div class="text-center mt-5">
-        <div class="text-black h3 font-weight-bold" th:text="${titulo}"></div>
-        <div class="card-body text-start">
+    <div class="mt-5">
+        <div class="text-black text-center h3 font-weight-bold" th:text="${titulo}"></div>
+        <div class="card-body">
             <form th:object="${categoria}" th:action="@{/administrador/guardar_categoria}" method="post">
                 <div class="form-group row">
                     <label class="control-label h5" for="nombrecategoria">Categoria : </label>
