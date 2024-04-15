@@ -1,6 +1,8 @@
 package com.sportgear.sportgear.Service.Impl;
 
+import com.sportgear.sportgear.Model.Estado;
 import com.sportgear.sportgear.Model.Inventario;
+import com.sportgear.sportgear.Repository.EstadosRepository;
 import com.sportgear.sportgear.Repository.InventarioRepository;
 import com.sportgear.sportgear.Service.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,7 @@ public class InventarioServiceImpl implements InventarioService {
     private InventarioRepository inventarioRepository;
 
     @Override
-    public List<Inventario> listarInventario() {
-        return (List<Inventario>) inventarioRepository.findAll() ;
-    }
-
+    public List<Inventario> listarInventario() {return (List<Inventario>) inventarioRepository.findAll();}
 
     /**
      *
@@ -39,4 +38,5 @@ public class InventarioServiceImpl implements InventarioService {
     public void eliminar(Long id) {
         inventarioRepository.deleteById(id);
     }
+
 }
