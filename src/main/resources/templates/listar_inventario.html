@@ -99,11 +99,11 @@
             <td th:text="${inven.estado.nombreEstado}"></td>
             <td>
                 <div>
-                    <a th:href="@{/administrador/editar/{id}(id=${inven.id})}" title="Editar Implemento">
+                    <a th:href="@{/administrador/editar/{id}(id=${inven.id})}" title="Editar Implemento" style="text-decoration: none">
                         <img src="/Images/Edit.png" alt="Editar Implemento" style="width: 30px; height: 30px">
                     </a>
                     <a th:href="@{/administrador/eliminar/{id}(id=${inven.id})}" title="Eliminar Implemento">
-                        <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px; outline: none"
+                        <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px"
                              onclick="return confirm('¿Está seguro de eliminar el implemento?');">
                     </a>
                 </div>
