@@ -37,7 +37,6 @@ public class InventarioController {
     @GetMapping("/crear_implemento")
     public String crear(Model model){
         Inventario inventario = new Inventario();
-        inventario.setDisponibilidad(true);
         List<CatImplementos> listCategorias = catImplementosService.listarCategorias();
         List<Estado> listEstados = estadosService.listarEstados();
         model.addAttribute("titulo","Agregar un Implemento");
@@ -49,7 +48,9 @@ public class InventarioController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Inventario inventario,
-                          RedirectAttributes redirectAttributes){
+                          RedirectAttributes redirectAttributes, @RequestParam(name = "flexSwitchCheckDefault", required = false) String flexSwitchCheckDefault){
+        String disponibilidad = flexSwitchCheckDefault != null ? "Disponible" : "No Disponible";
+        inventario.setDisponibilidad(disponibilidad);
         inventarioService.guardar(inventario);
         redirectAttributes.addFlashAttribute("success","Implemento guardado con éxito");
         return "redirect:/administrador/inventario";

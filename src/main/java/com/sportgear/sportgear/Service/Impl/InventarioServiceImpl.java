@@ -16,14 +16,8 @@ public class InventarioServiceImpl implements InventarioService {
     @Autowired
     private InventarioRepository inventarioRepository;
 
-    @Autowired
-    private EstadosRepository estadoRepository;
-
     @Override
-    public List<Inventario> listarInventario() {
-        return (List<Inventario>) inventarioRepository.findAll() ;
-    }
-
+    public List<Inventario> listarInventario() {return (List<Inventario>) inventarioRepository.findAll();}
 
     /**
      *

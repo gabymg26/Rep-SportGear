@@ -23,7 +23,7 @@ public class Inventario {
     @JoinColumn(name = "idCategoria")
     private CatImplementos catImplementos;
 
-    private boolean disponibilidad;
+    private String disponibilidad;
 
     @OneToOne
     @JoinColumn(name = "idEstado")
