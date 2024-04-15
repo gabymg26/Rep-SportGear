@@ -31,7 +31,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto d-flex align-items-end">
-                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/administrador/inventario}">Inventario
+                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/administrador/inventario}">Inventario
                     </a></li>
                     <li class="nav-item"><a class="nav-link text-dark" th:href="@{/administrador/listarCategorias}">Categorias</a></li>
                     <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">
@@ -44,20 +44,20 @@
 
     <div class="alert alert-success alert-dismissible fade show" th:if="${success != null}">
         <label th:text="${success}"></label>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"></span>
         </button>
     </div>
     <div class="alert alert-danger alert-dismissible fade show" th:if="${error != null}">
         <label th:text="${error}"></label>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"></span>
         </button>
     </div>
     <div class="alert alert-warning alert-dismissible fade show" th:if="${warning != null}">
         <label th:text="${warning}"></label>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"></span>
         </button>
     </div>
 
@@ -77,8 +77,8 @@
 
     <div class="mt-5">
 
-    <table class="table table-hover" >
-        <thead style="background-color: #DFD4A6">
+    <table class="table table-bordered table-hover" >
+        <thead class="text-center" style="background-color: #DFD4A6">
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Nombre Implemento</th>
@@ -89,7 +89,7 @@
             <th scope="col">Opciones</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
         <tr th:each="inven:${inventario}">
             <th scope="row" th:text="${inven.id}"></th>
             <td th:text="${inven.nombreImplemento}"></td>
@@ -100,10 +100,10 @@
             <td>
                 <div>
                     <a th:href="@{/administrador/editar/{id}(id=${inven.id})}" title="Editar Implemento">
-                        <img src="/Images/Edit.png" alt="Editar Implemento" class="mr-3" style="width: 30px; height: 30px">
+                        <img src="/Images/Edit.png" alt="Editar Implemento" style="width: 30px; height: 30px">
                     </a>
                     <a th:href="@{/administrador/eliminar/{id}(id=${inven.id})}" title="Eliminar Implemento">
-                        <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px"
+                        <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px; outline: none"
                              onclick="return confirm('¿Está seguro de eliminar el implemento?');">
                     </a>
                 </div>
@@ -120,5 +120,6 @@
     </a>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
