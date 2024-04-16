@@ -81,8 +81,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         if (roles.contains("Administrativo")) {
             return "/administrador/inventario";
         } else {
-            // Redirige a una página predeterminada si no es un administrativo esto no es buena practica
-            return "/default";
+            return "/estudiar/listaInventario";
         }
     }
 }

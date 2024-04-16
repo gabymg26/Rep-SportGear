@@ -22,21 +22,14 @@ import com.sportgear.sportgear.Repository.UsuarioRepositorio;
 @Service
 public class UsuarioServicioImpl implements UsuarioServicio {
 
+    @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-
-    public UsuarioServicioImpl(UsuarioRepositorio usuarioRepositorio) {
-        super();
-        this.usuarioRepositorio = usuarioRepositorio;
-    }
-
-
     @Override
     public Usuario guardar(UsuarioRegistroDTO registroDTO, String rol) {
-
 
         // Verificar si la contraseña y el rol no son nulos
         if (registroDTO.getPassword() == null || rol == null) {
