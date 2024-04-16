@@ -1,13 +1,17 @@
 package com.sportgear.sportgear.Model;
 
-import com.sportgear.sportgear.Model.Rol;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.*;
-import javax.print.DocFlavor;
+
 
 @Entity
+@Getter
+@Setter
 @Table(name="usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Usuario {
 
@@ -20,7 +24,9 @@ public class Usuario {
 
     @Column(name = "apellido")
     private String apellido;
+
     private String email;
+
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -31,83 +37,14 @@ public class Usuario {
     )
 
     private Collection<Rol> roles;
+
     private Long codigo;
+
     private Long telefono;
+
     private String programa;
 
     public <T> Usuario(String nombre, String apellido, String email, String encode, List<T> list, Long codigo, Long telefono) {
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Collection<Rol> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Rol> roles) {
-        this.roles = roles;
-    }
-
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
-    }
-
-    public Long getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(Long telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getPrograma() {
-        return programa;
-    }
-
-    public void setPrograma(String programa) {
-        this.programa = programa;
     }
 
     public Usuario(String nombre, String apellido, String email, String password, Collection<Rol> roles, Long codigo, Long telefono, String programa) {
