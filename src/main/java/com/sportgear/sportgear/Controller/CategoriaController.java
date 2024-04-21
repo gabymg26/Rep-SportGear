@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-@RequestMapping("/administrador")
+@RequestMapping("/admin")
 public class CategoriaController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class CategoriaController {
                          RedirectAttributes redirectAttributes){
         catImplementosService.guadar_categoria(catImplementos);
         redirectAttributes.addFlashAttribute("success","Categoria creada con Éxito");
-        return "redirect:/administrador/inventario";
+        return "redirect:/admin/inventario";
     }
 
 }
