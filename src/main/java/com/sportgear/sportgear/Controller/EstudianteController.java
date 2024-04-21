@@ -22,6 +22,12 @@ public class EstudianteController {
     @Autowired
     private PrestamosService prestamosService;
 
+    @Autowired
+    private DevolucionesService devolucionesService;
+
+    @Autowired
+    private EstadosService estadosService;
+
     @GetMapping("/panelPrincipal")
     public String verInventario(Model model){
         List<Inventario> inventarioList = inventarioService.listarInventario();
@@ -44,6 +50,25 @@ public class EstudianteController {
     public String procesarSolicitud(Prestamos prestamo,RedirectAttributes redirectAttributes) {
         prestamosService.solicitudPrestamo(prestamo);
         redirectAttributes.addFlashAttribute("success","Solicitud Exitosa");
+        return "redirect:/student/panelPrincipal";
+    }
+
+    @GetMapping("/devolucion")
+    public String devolucion(Model model) {
+        Devoluciones devolucion = new Devoluciones();
+        List<Inventario> inventarioList = inventarioService.listarInventario();
+        List<Estado> estadoList = estadosService.listarEstados();
+        model.addAttribute("titulo","Devolucion Implemento");
+        model.addAttribute("devolucion",devolucion);
+        model.addAttribute("inventario",inventarioList);
+        model.addAttribute("estados",estadoList);
+        return "devolucion";
+    }
+
+    @PostMapping("/guadarDevolucion")
+    public String procesarDevolucion(Devoluciones devoluciones,RedirectAttributes redirectAttributes) {
+        devolucionesService.solicitudDevolucion(devoluciones);
+        redirectAttributes.addFlashAttribute("success","Devolución Exitosa");
         return "redirect:/student/panelPrincipal";
     }
 
