@@ -2,6 +2,7 @@ package com.sportgear.sportgear.Model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,11 +17,12 @@ public class Prestamos {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fechaPrestamo;
 
-    @OneToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
+    private String nombreUsuario;
+
+    private Long codigoUsuario;
 
     @OneToOne
     @JoinColumn(name = "idInventario")
@@ -31,7 +33,8 @@ public class Prestamos {
         return "Prestamos{" +
                 "id=" + id +
                 ", fechaPrestamo=" + fechaPrestamo +
-                ", usuario=" + usuario +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", codigoUsuario=" + codigoUsuario +
                 ", inventario=" + inventario +
                 '}';
     }
