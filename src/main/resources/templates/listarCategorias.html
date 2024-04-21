@@ -14,7 +14,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #EDEFF0">
         <div class="container">
-            <a class="navbar-brand" th:href="@{/administrador/inventario}">
+            <a class="navbar-brand" th:href="@{/admin/inventario}">
                 <img src="/Images/Usco.png" alt="Imagen de la Usco">
             </a>
 
@@ -27,9 +27,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto d-flex align-items-end">
-                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/administrador/inventario}">Inventario
+                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/admin/inventario}">Inventario
                     </a></li>
-                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/administrador/listarCategorias}">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/admin/listarCategorias}">Categorias</a></li>
                     <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">
                         <img src="/Images/Logout.png" alt="Imagen Cerrar Sesión" style="width: 45px">
                     </a></li>

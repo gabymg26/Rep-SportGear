@@ -20,12 +20,6 @@ public class EstudianteController {
     private InventarioService inventarioService;
 
     @Autowired
-    private CatImplementosService catImplementosService;
-
-    @Autowired
-    private EstadosService estadosService;
-
-    @Autowired
     private PrestamosService prestamosService;
 
     @GetMapping("/panelPrincipal")
@@ -40,13 +34,9 @@ public class EstudianteController {
     public String solicitud(Model model){
         Prestamos prestamos = new Prestamos();
         List<Inventario> inventarioList = inventarioService.listarInventario();
-        List<CatImplementos> catImplementosList = catImplementosService.listarCategorias();
-        List<Estado> estadoList = estadosService.listarEstados();
         model.addAttribute("titulo","Solicitar Implemento");
         model.addAttribute("prestamo", prestamos);
         model.addAttribute("inventario",inventarioList);
-        model.addAttribute("categorias",catImplementosList);
-        model.addAttribute("estados",estadoList);
         return "solicitud";
     }
 

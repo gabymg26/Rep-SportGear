@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-@RequestMapping("/administrador")
+@RequestMapping("/admin")
 public class InventarioController {
 
     @Autowired
@@ -53,7 +53,7 @@ public class InventarioController {
         inventario.setDisponibilidad(disponibilidad);
         inventarioService.guardar(inventario);
         redirectAttributes.addFlashAttribute("success","Implemento guardado con éxito");
-        return "redirect:/administrador/inventario";
+        return "redirect:/admin/inventario";
     }
 
     @GetMapping("/editar/{id}")
@@ -66,11 +66,11 @@ public class InventarioController {
 
             if(inventario == null){
                 redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
-                return "redirect:/administrador/inventario";
+                return "redirect:/admin/inventario";
             }
         }else {
             redirectAttributes.addFlashAttribute("error", "Atención: Error con el Id del implemento");
-            return "redirect:/administrador/inventario";
+            return "redirect:/admin/inventario";
         }
 
         List<CatImplementos> listCategorias = catImplementosService.listarCategorias();
@@ -92,15 +92,15 @@ public class InventarioController {
 
             if(inventario == null){
                 redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
-                return "redirect:/administrador/inventario";
+                return "redirect:/admin/inventario";
             }
         }else {
             redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
-            return "redirect:/administrador/inventario";
+            return "redirect:/admin/inventario";
         }
 
         inventarioService.eliminar(idInventario);
         redirectAttributes.addFlashAttribute("warning", "Implemento eliminado con éxito");
-        return "redirect:/administrador/inventario";
+        return "redirect:/admin/inventario";
     }
 }
