@@ -48,13 +48,16 @@ public class InventarioController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Inventario inventario,
-                          RedirectAttributes redirectAttributes, @RequestParam(name = "flexSwitchCheckDefault", required = false) String flexSwitchCheckDefault){
+                          RedirectAttributes redirectAttributes,
+                          @RequestParam(name = "flexSwitchCheckDefault", required = false) String flexSwitchCheckDefault) {
+
         String disponibilidad = flexSwitchCheckDefault != null ? "Disponible" : "No Disponible";
         inventario.setDisponibilidad(disponibilidad);
         inventarioService.guardar(inventario);
         redirectAttributes.addFlashAttribute("success","Implemento guardado con éxito");
         return "redirect:/admin/inventario";
     }
+
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable("id")Long idInventario, Model model, RedirectAttributes redirectAttributes){
