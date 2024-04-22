@@ -1,8 +1,6 @@
 package com.sportgear.sportgear.Service.Impl;
 
-import com.sportgear.sportgear.Model.Estado;
 import com.sportgear.sportgear.Model.Inventario;
-import com.sportgear.sportgear.Repository.EstadosRepository;
 import com.sportgear.sportgear.Repository.InventarioRepository;
 import com.sportgear.sportgear.Service.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;

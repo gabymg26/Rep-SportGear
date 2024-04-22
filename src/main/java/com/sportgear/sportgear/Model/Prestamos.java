@@ -15,7 +15,7 @@ public class Prestamos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idSolicitud;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fechaPrestamo;
@@ -31,7 +31,7 @@ public class Prestamos {
     @Override
     public String toString() {
         return "Prestamos{" +
-                "id=" + id +
+                "id=" + idSolicitud +
                 ", fechaPrestamo=" + fechaPrestamo +
                 ", nombreUsuario='" + nombreUsuario + '\'' +
                 ", codigoUsuario=" + codigoUsuario +
