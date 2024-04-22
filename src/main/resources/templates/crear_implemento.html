@@ -85,15 +85,18 @@
                         />
                     </select>
                 </div>
+
                 <div class="form-group row mb-2 align-items-center">
                     <label class="control-label h5">Disponible: </label>
                     <label>Selecciona una opción</label>
                     <div class="form-check form-switch ms-3">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault" id="disponibleLabel"></label>
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="flexSwitchCheckDefault" th:checked="${implemento.disponibilidad == 'Disponible'}">
+                        <label class="form-check-label" for="flexSwitchCheckDefault" id="disponibleLabel" th:text="${implemento.disponibilidad}"></label>
                     </div>
                     <input type="hidden" th:field="*{disponibilidad}" id="disponibilidadHidden">
                 </div>
+
+
                 <div class="form-group row mb-2">
                     <label class="control-label h5" for="estado">Estado: </label>
                     <select type="text" th:field="*{estado}" class="form-select" id="estado" required style="background-color: #DFD4A6">
