@@ -16,7 +16,7 @@ public class Devoluciones {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idDevolucion;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fechaDevolucion;
@@ -34,7 +34,7 @@ public class Devoluciones {
     @Override
     public String toString() {
         return "Devoluciones{" +
-                "id=" + id +
+                "id=" + idDevolucion +
                 ", fechaDevolucion=" + fechaDevolucion +
                 ", estadoDevolucion='" + estadoDevolucion + '\'' +
                 ", inventario=" + inventario +
