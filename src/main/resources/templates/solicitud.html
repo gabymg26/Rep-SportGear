@@ -52,7 +52,7 @@
 
             <form th:object="${prestamo}" th:action="@{/student/guardarPrestamos}" method="post">
                 <div class="form-group row mb-2">
-                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" th:field="*{idSolicitud}">
                     <label class="control-label h5" for="nombreUsuario">Nombre Usuario: </label>
                     <input type="text" th:field="*{nombreUsuario}" class="form-control" id="nombreUsuario" required style="background-color: #DFD4A6">
                 </div>

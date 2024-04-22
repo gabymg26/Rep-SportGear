@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.sportgear.sportgear.Controller.dto.UsuarioRegistroDTO;
 import com.sportgear.sportgear.Model.Rol;
 import com.sportgear.sportgear.Model.Usuario;

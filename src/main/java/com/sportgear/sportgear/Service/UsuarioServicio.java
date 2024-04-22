@@ -2,7 +2,6 @@ package com.sportgear.sportgear.Service;
 
 import com.sportgear.sportgear.Controller.dto.UsuarioRegistroDTO;
 import com.sportgear.sportgear.Model.Usuario;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
