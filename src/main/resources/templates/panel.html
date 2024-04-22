@@ -84,7 +84,7 @@
             </tr>
             </thead>
             <tbody class="text-center">
-            <tr th:each="inven:${inventario}">
+            <tr th:each="inven:${inventario.content}">
                 <th scope="row" th:text="${inven.id}"></th>
                 <td th:text="${inven.nombreImplemento}"></td>
                 <td th:text="${inven.cantidad}"></td>
@@ -95,6 +95,22 @@
             </tbody>
         </table>
     </div>
+</div>
+
+<div class="container text-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li th:if="${inventario.number > 0}" class="page-item">
+                <a class="page-link" th:href="@{/student/panelPrincipal(page=0)}">&lt;&lt;</a>
+            </li>
+            <li th:each="i : ${#numbers.sequence(0, inventario.totalPages - 1)}" class="page-item">
+                <a class="page-link" th:href="@{/student/panelPrincipal(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+            <li th:if="${inventario.number + 1 < inventario.totalPages}" class="page-item">
+                <a class="page-link" th:href="@{/student/panelPrincipal(page=${inventario.totalPages - 1})}">&gt;&gt;</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
 
