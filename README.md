@@ -1,5 +1,17 @@
 # Rep-SportGear
 
+INFORMACIÓN ESENCIAL
+
+Para poder hacer uso de este programa es importante tener lo siguiente en cuenta:
+
+-Se usa el JDK 17
+-Se usa Springboot 2.5.7
+
+*Descargar el zip con los archivos del codigo y abrirlo en IntelliJ IDEA
+*Para instalarlo simplemente debemos importar lo que es la base de datos en MySql
+
+PULL REQUEST
+
 Se deben presentar pull request cortos (Ej: Pocas lineas de Codigo = Min:30 o Max:50)
 
 Forma Correcta de realizar un pull request
