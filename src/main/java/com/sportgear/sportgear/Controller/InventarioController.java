@@ -7,10 +7,14 @@ import com.sportgear.sportgear.Service.CatImplementosService;
 import com.sportgear.sportgear.Service.EstadosService;
 import com.sportgear.sportgear.Service.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.util.List;
 
 @Controller
@@ -27,8 +31,9 @@ public class InventarioController {
     private EstadosService estadosService;
 
     @GetMapping("/inventario")
-    public String listarInventario(Model model){
-        List<Inventario> listadoInventario = inventarioService.listarInventario();
+    public String listarInventario(Model model, @RequestParam(defaultValue = "0") int page){
+        Pageable pageable = PageRequest.of(page, 5);
+        Page<Inventario> listadoInventario = inventarioService.listarInventarioPaginado(pageable);
         model.addAttribute("titulo","Lista de Inventario");
         model.addAttribute("inventario",listadoInventario);
         return "listar_inventario";
