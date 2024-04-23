@@ -18,6 +18,10 @@
                 <img src="/Images/Usco.png" alt="Imagen de la Usco">
             </a>
 
+            <p class="nav-item text-dark">
+                Bienvenid@, <span sec:authentication="principal.username" class="d-flex align-items-center"></span>
+            </p>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -67,15 +71,13 @@
     <div class="row justify-content-center">
         <div class="mt-5 col-md-2">
             <table class="table table-hover">
-                <thead style="background-color: #DFD4A6">
+                <thead class="text-center" style="background-color: #DFD4A6">
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Categoria</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                     <tr th:each="cat:${categorias}">
-                        <th scope="row" th:text="${cat.id}"></th>
                         <td th:text="${cat.nombre}"></td>
                     </tr>
                 </tbody>
