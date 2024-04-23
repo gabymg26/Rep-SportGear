@@ -61,7 +61,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .successHandler((request, response, authentication) -> {
                     String targetUrl = determineTargetUrl(authentication);
                     response.sendRedirect(targetUrl);
-                })// Redirige al administrativo a la página listar_inventario.html después de iniciar sesión
+                })
                 .and()
                 .logout()
                 .invalidateHttpSession(true)
