@@ -15,7 +15,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #EDEFF0">
         <div class="container">
-            <a class="navbar-brand" th:href="@{/admin/inventario}">
+            <a class="navbar-brand" th:href="@{/admin/inventarioImplementos}">
                 <img src="/Images/Usco.png" alt="Imagen de la Usco">
             </a>
 
@@ -32,9 +32,19 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto d-flex align-items-end">
-                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/admin/inventario}">Inventario
+                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/admin/inventarioImplementos}">Inventario
                     </a></li>
                     <li class="nav-item"><a class="nav-link text-dark" th:href="@{/admin/listarCategorias}">Categorias</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seguimiento
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/admin/}">Prestamos</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/}">Devoluciones</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">
                         <img src="/Images/Logout.png" alt="Imagen Cerrar Sesión" style="width: 45px">
                     </a></li>
@@ -58,7 +68,7 @@
         <div class="text-black text-center h3 font-weight-bold" th:text="${titulo}"></div>
         <div class="card-body">
 
-            <form th:object="${implemento}" th:action="@{/admin/guardar}" method="post">
+            <form th:object="${implemento}" th:action="@{/admin/guardarImplemento}" method="post">
                 <div class="form-group row mb-2">
                     <input type="hidden" th:field="*{id}">
                     <label class="control-label h5" for="nombreImplemento">Nombre Implemento: </label>
@@ -72,7 +82,7 @@
                     <label class="control-label h5" for="categoria">Categoria: </label>
                     <div class="col-sm-9">
                         <p class="d-inline">Si no encuentras tu categoria, creala:</p>
-                        <a th:href="@{/admin/nueva_categoria}">
+                        <a th:href="@{/admin/nuevaCategoria}">
                             <img src="/Images/CreateCategory.png" alt="Editar Implemento" style="width: 20px; height: 20px">
                         </a>
                     </div>

@@ -78,7 +78,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .collect(Collectors.toList());
 
         if (roles.contains("Administrativo")) {
-            return "/admin/inventario";
+            return "/admin/inventarioImplementos";
         } else {
             return "/student/panelPrincipal";
         }
