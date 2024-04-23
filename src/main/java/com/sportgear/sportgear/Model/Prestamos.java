@@ -20,8 +20,6 @@ public class Prestamos {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fechaPrestamo;
 
-    private String nombreUsuario;
-
     private Long codigoUsuario;
 
     @OneToOne
@@ -31,9 +29,8 @@ public class Prestamos {
     @Override
     public String toString() {
         return "Prestamos{" +
-                "id=" + idSolicitud +
+                "idSolicitud=" + idSolicitud +
                 ", fechaPrestamo=" + fechaPrestamo +
-                ", nombreUsuario='" + nombreUsuario + '\'' +
                 ", codigoUsuario=" + codigoUsuario +
                 ", inventario=" + inventario +
                 '}';

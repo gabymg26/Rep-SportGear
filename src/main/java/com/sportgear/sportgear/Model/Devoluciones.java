@@ -21,8 +21,6 @@ public class Devoluciones {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fechaDevolucion;
 
-    private String nombreUsuario;
-
     private Long codigoUsuario;
 
     private String estadoDevolucion;
