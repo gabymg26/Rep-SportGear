@@ -4,6 +4,7 @@ import com.sportgear.sportgear.Controller.dto.UsuarioRegistroDTO;
 import com.sportgear.sportgear.Repository.UsuarioRepositorio;
 import com.sportgear.sportgear.Service.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +42,7 @@ public class RegistroUsuarioControlador {
     }
 
     @PostMapping
-    public String registrarCuentaDeUsuario(@ModelAttribute("usuario") UsuarioRegistroDTO registroDTO, @RequestParam("rol") String rol, Model model) {
+    public String registrarCuentaDeUsuario(@ModelAttribute("usuario") UsuarioRegistroDTO registroDTO, @RequestParam("rol") String rol,@RequestParam("codigo") Long codigoUsuario, Model model) {
         if (usuarioRepository.existsByEmail(registroDTO.getEmail())) {
             model.addAttribute("error", "El correo electrónico ya está registrado");
             List<String> rolesDisponibles = Arrays.asList("Estudiante", "Administrativo");
