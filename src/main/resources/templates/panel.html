@@ -75,7 +75,6 @@
         <table class="table table-bordered table-hover" >
             <thead class="text-center" style="background-color: #DFD4A6">
             <tr>
-                <th scope="col">Id</th>
                 <th scope="col">Nombre Implemento</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Categoría</th>
@@ -85,7 +84,6 @@
             </thead>
             <tbody class="text-center">
             <tr th:each="inven:${inventario.content}">
-                <th scope="row" th:text="${inven.id}"></th>
                 <td th:text="${inven.nombreImplemento}"></td>
                 <td th:text="${inven.cantidad}"></td>
                 <td th:text="${inven.catImplementos.nombre}"></td>
