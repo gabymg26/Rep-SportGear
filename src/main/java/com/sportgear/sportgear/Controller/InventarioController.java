@@ -30,16 +30,16 @@ public class InventarioController {
     @Autowired
     private EstadosService estadosService;
 
-    @GetMapping("/inventario")
+    @GetMapping("/inventarioImplementos")
     public String listarInventario(Model model, @RequestParam(defaultValue = "0") int page){
         Pageable pageable = PageRequest.of(page, 5);
         Page<Inventario> listadoInventario = inventarioService.listarInventarioPaginado(pageable);
         model.addAttribute("titulo","Lista de Inventario");
         model.addAttribute("inventario",listadoInventario);
-        return "listar_inventario";
+        return "listarInventario";
     }
 
-    @GetMapping("/crear_implemento")
+    @GetMapping("/crearImplemento")
     public String crear(Model model){
         Inventario inventario = new Inventario();
         List<CatImplementos> listCategorias = catImplementosService.listarCategorias();
@@ -48,10 +48,10 @@ public class InventarioController {
         model.addAttribute("implemento",inventario);
         model.addAttribute("categorias",listCategorias);
         model.addAttribute("estados",listEstados);
-        return "crear_implemento";
+        return "crearImplemento";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/guardarImplemento")
     public String guardar(@ModelAttribute Inventario inventario,
                           RedirectAttributes redirectAttributes,
                           @RequestParam(name = "flexSwitchCheckDefault", required = false) String flexSwitchCheckDefault) {
@@ -64,7 +64,7 @@ public class InventarioController {
     }
 
 
-    @GetMapping("/editar/{id}")
+    @GetMapping("/editarImplemento/{id}")
     public String editar(@PathVariable("id")Long idInventario, Model model, RedirectAttributes redirectAttributes){
 
         Inventario inventario = null;
@@ -87,10 +87,10 @@ public class InventarioController {
         model.addAttribute("implemento",inventario);
         model.addAttribute("categorias",listCategorias);
         model.addAttribute("estados",listEstados);
-        return "crear_implemento";
+        return "crearImplemento";
     }
 
-    @GetMapping("/eliminar/{id}")
+    @GetMapping("/eliminarImplemento/{id}")
     public String eliminar(@PathVariable ("id")Long idInventario, RedirectAttributes redirectAttributes){
 
         Inventario inventario = null;

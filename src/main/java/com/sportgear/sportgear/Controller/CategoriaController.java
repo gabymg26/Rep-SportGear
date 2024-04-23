@@ -25,15 +25,15 @@ public class CategoriaController {
         return "listarCategorias";
     }
 
-    @GetMapping("/nueva_categoria")
+    @GetMapping("/nuevaCategoria")
     public String crear(Model model){
         CatImplementos catImplementos = new CatImplementos();
         model.addAttribute("titulo","Agregar una Categoria");
         model.addAttribute("categoria",catImplementos);
-        return "crear_categoria";
+        return "crearCategoria";
     }
 
-    @PostMapping("/guardar_categoria")
+    @PostMapping("/guardarCategoria")
     public String guadar(@ModelAttribute("categorias") CatImplementos catImplementos,
                          RedirectAttributes redirectAttributes){
         catImplementosService.guadar_categoria(catImplementos);

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <title>Categorias</title>
+    <title>Seguimiento Prestamos</title>
     <link rel="shortcut icon" href="/Images/Usco.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto d-flex align-items-end">
-                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/admin/inventarioImplementos}">Inventario
+                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/admin/inventarioImplementos}">Inventario
                     </a></li>
                     <li class="nav-item"><a class="nav-link text-dark" th:href="@{/admin/listarCategorias}">Categorias</a></li>
                     <li class="nav-item dropdown">
@@ -54,46 +54,90 @@
 
     <div class="alert alert-success alert-dismissible fade show" th:if="${success != null}">
         <label th:text="${success}"></label>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"></span>
         </button>
     </div>
     <div class="alert alert-danger alert-dismissible fade show" th:if="${error != null}">
         <label th:text="${error}"></label>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"></span>
         </button>
     </div>
     <div class="alert alert-warning alert-dismissible fade show" th:if="${warning != null}">
         <label th:text="${warning}"></label>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"></span>
         </button>
     </div>
 
 </header>
 
+
 <div class="container text-center mt-5">
     <h4 th:text="${titulo}"></h4>
 </div>
 
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="mt-5 col-md-2">
-            <table class="table table-hover">
-                <thead class="text-center" style="background-color: #DFD4A6">
-                <tr>
-                    <th scope="col">Categoria</th>
-                </tr>
-                </thead>
-                <tbody class="text-center">
-                    <tr th:each="cat:${categorias}">
-                        <td th:text="${cat.nombre}"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+    <div class="mt-5">
+
+        <table class="table table-bordered table-hover" >
+            <thead class="text-center" style="background-color: #DFD4A6">
+            <tr>
+                <th scope="col">Nombre Implemento</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Disponibilidad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <tr th:each="inven:${inventario.content}">
+                <td th:text="${inven.nombreImplemento}"></td>
+                <td th:text="${inven.cantidad}"></td>
+                <td th:text="${inven.catImplementos.nombre}"></td>
+                <td th:text="${inven.disponibilidad}"></td>
+                <td th:text="${inven.estado.nombreEstado}"></td>
+                <td>
+                    <div>
+                        <a th:href="@{/admin/editarImplemento/{id}(id=${inven.id})}" title="Editar Implemento" style="text-decoration: none">
+                            <img src="/Images/Edit.png" alt="Editar Implemento" style="width: 30px; height: 30px">
+                        </a>
+                        <a th:href="@{/admin/eliminarImplemento/{id}(id=${inven.id})}" title="Eliminar Implemento">
+                            <img src="/Images/Delete.png" alt="Eliminar Implemento" style="width: 30px; height: 30px"
+                                 onclick="return confirm('¿Está seguro de eliminar el implemento?');">
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+</div>
+
+<div class="container text-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li th:if="${inventario.number > 0}" class="page-item">
+                <a class="page-link" th:href="@{/admin/inventario(page=0)}">&lt;&lt;</a>
+            </li>
+            <li th:each="i : ${#numbers.sequence(0, inventario.totalPages - 1)}" class="page-item">
+                <a class="page-link" th:href="@{/admin/inventario(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+            <li th:if="${inventario.number + 1 < inventario.totalPages}" class="page-item">
+                <a class="page-link" th:href="@{/admin/inventario(page=${inventario.totalPages - 1})}">&gt;&gt;</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="container">
+    <a th:href="@{/admin/crearImplemento}" title="Agregar nuevo Implemento">
+        <img src="/Images/Add.png" alt="Agregar nuevo Implemento" style="width: 50px; height: 50px">
+    </a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
