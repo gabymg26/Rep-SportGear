@@ -22,6 +22,8 @@ public class Prestamos {
 
     private Long codigoUsuario;
 
+    private String nombreUsuario;
+
     @OneToOne
     @JoinColumn(name = "idInventario")
     private Inventario inventario;
