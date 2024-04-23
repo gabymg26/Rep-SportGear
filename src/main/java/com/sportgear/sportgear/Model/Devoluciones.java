@@ -23,6 +23,8 @@ public class Devoluciones {
 
     private Long codigoUsuario;
 
+    private String nombreUsuario;
+
     private String estadoDevolucion;
 
     @OneToOne
