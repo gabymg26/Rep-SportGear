@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.security.Principal;
 import java.util.List;
 
+/**
+ * Controlador para las acciones del estudiante en el sistema.
+ */
 @Controller
 @RequestMapping("/student")
 public class EstudianteController {
@@ -33,6 +35,13 @@ public class EstudianteController {
     @Autowired
     private EstadosService estadosService;
 
+    /**
+     * Maneja las solicitudes GET para mostrar el panel principal del estudiante.
+     *
+     * @param model El modelo utilizado para pasar datos a la vista.
+     * @param page El número de página solicitado (por defecto es 0).
+     * @return La vista para mostrar el panel principal.
+     */
     @GetMapping("/panelPrincipal")
     public String verInventario(Model model,@RequestParam(defaultValue = "0") int page){
         Pageable pageable = PageRequest.of(page, 8);
@@ -42,6 +51,12 @@ public class EstudianteController {
         return "panel";
     }
 
+    /**
+     * Maneja las solicitudes GET para mostrar el formulario de solicitud de préstamo.
+     *
+     * @param model El modelo utilizado para pasar datos a la vista.
+     * @return La vista para mostrar el formulario de solicitud de préstamo.
+     */
     @GetMapping("/solicitud")
     public String solicitud(Model model){
         Prestamos prestamos = new Prestamos();
@@ -52,6 +67,14 @@ public class EstudianteController {
         return "solicitud";
     }
 
+    /**
+     * Maneja las solicitudes POST para procesar la solicitud de préstamo.
+     *
+     * @param prestamo El objeto Prestamos que representa el préstamo a solicitar.
+     * @param principal El objeto Principal que contiene información sobre el usuario autenticado.
+     * @param redirectAttributes Atributos para redireccionamiento flash.
+     * @return Redirecciona al panel principal del estudiante con un mensaje de éxito.
+     */
     @PostMapping("/guardarPrestamos")
     public String procesarSolicitud(Prestamos prestamo, Principal principal, RedirectAttributes redirectAttributes) {
         String nombreUsuario = principal.getName();
@@ -61,6 +84,12 @@ public class EstudianteController {
         return "redirect:/student/panelPrincipal";
     }
 
+    /**
+     * Maneja las solicitudes GET para mostrar el formulario de devolución de implementos.
+     *
+     * @param model El modelo utilizado para pasar datos a la vista.
+     * @return La vista para mostrar el formulario de devolución de implementos.
+     */
     @GetMapping("/devolucion")
     public String devolucion(Model model) {
         Devoluciones devolucion = new Devoluciones();
@@ -73,6 +102,14 @@ public class EstudianteController {
         return "devolucion";
     }
 
+    /**
+     * Maneja las solicitudes POST para procesar la devolución de implementos.
+     *
+     * @param devoluciones El objeto Devoluciones que representa la devolución a procesar.
+     * @param principal El objeto Principal que contiene información sobre el usuario autenticado.
+     * @param redirectAttributes Atributos para redireccionamiento flash.
+     * @return Redirecciona al panel principal del estudiante con un mensaje de éxito.
+     */
     @PostMapping("/guadarDevolucion")
     public String procesarDevolucion(Devoluciones devoluciones,Principal principal,RedirectAttributes redirectAttributes) {
         String nombreUsuario = principal.getName();
