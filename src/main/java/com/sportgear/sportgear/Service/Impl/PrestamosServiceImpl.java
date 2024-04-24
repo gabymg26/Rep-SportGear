@@ -6,7 +6,11 @@ import com.sportgear.sportgear.Repository.InventarioRepository;
 import com.sportgear.sportgear.Repository.PrestamoRepository;
 import com.sportgear.sportgear.Service.PrestamosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PrestamosServiceImpl implements PrestamosService {
@@ -16,6 +20,11 @@ public class PrestamosServiceImpl implements PrestamosService {
 
     @Autowired
     private InventarioRepository inventarioRepository;
+
+    @Override
+    public List<Prestamos> listarPrestamos() {
+        return prestamoRepository.findAll();
+    }
 
     @Override
     public void solicitudPrestamo(Prestamos prestamos) {
@@ -31,5 +40,10 @@ public class PrestamosServiceImpl implements PrestamosService {
             inventarioRepository.save(inventario);
         }
         prestamoRepository.save(prestamos);
+    }
+
+    @Override
+    public Page<Prestamos> listarPrestamosPaginado(Pageable pageable) {
+        return prestamoRepository.findAll(pageable);
     }
 }

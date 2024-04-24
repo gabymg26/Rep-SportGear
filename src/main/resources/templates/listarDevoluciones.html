@@ -39,9 +39,9 @@
                             Seguimiento
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" th:href="@{/admin/}">Prestamos</a></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/seguimientoPrestamos}">Prestamos</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" th:href="@{/admin/}">Devoluciones</a></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/seguimientoDevoluciones}">Devoluciones</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">
@@ -85,21 +85,23 @@
 
         <table class="table table-bordered table-hover" >
             <thead class="text-center" style="background-color: #DFD4A6">
-            <tr>
-                <th scope="col">Nombre Implemento</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Categoría</th>
-                <th scope="col">Disponibilidad</th>
-                <th scope="col">Estado</th>
-            </tr>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Fecha Devolución</th>
+                    <th scope="col">Nombre Implemento</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Estado Devolución</th>
+                </tr>
             </thead>
             <tbody class="text-center">
-            <tr th:each="inven:${inventario.content}">
-                <td th:text="${inven.nombreImplemento}"></td>
-                <td th:text="${inven.cantidad}"></td>
-                <td th:text="${inven.catImplementos.nombre}"></td>
-                <td th:text="${inven.disponibilidad}"></td>
-                <td th:text="${inven.estado.nombreEstado}"></td>
+            <tr th:each="devolucion:${devoluciones.content}">
+                <td th:text="${devolucion.nombreUsuario}"></td>
+                <td th:text="${devolucion.codigoUsuario}"></td>
+                <td th:text="${devolucion.fechaDevolucion}"></td>
+                <td th:text="${devolucion.inventario.nombreImplemento}"></td>
+                <td th:text="${devolucion.inventario.catImplementos.nombre}"></td>
+                <td th:text="${devolucion.inventario.estado.nombreEstado}"></td>
             </tr>
             </tbody>
         </table>
@@ -109,14 +111,14 @@
 <div class="container text-center">
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li th:if="${inventario.number > 0}" class="page-item">
-                <a class="page-link" th:href="@{/admin/inventario(page=0)}">&lt;&lt;</a>
+            <li th:if="${devoluciones.number > 0}" class="page-item">
+                <a class="page-link" th:href="@{/admin/seguimientoDevoluciones(page=0)}">&lt;&lt;</a>
             </li>
-            <li th:each="i : ${#numbers.sequence(0, inventario.totalPages - 1)}" class="page-item">
-                <a class="page-link" th:href="@{/admin/inventario(page=${i})}" th:text="${i + 1}"></a>
+            <li th:each="i : ${#numbers.sequence(0, devoluciones.totalPages - 1)}" class="page-item">
+                <a class="page-link" th:href="@{/admin/seguimientoDevoluciones(page=${i})}" th:text="${i + 1}"></a>
             </li>
-            <li th:if="${inventario.number + 1 < inventario.totalPages}" class="page-item">
-                <a class="page-link" th:href="@{/admin/inventario(page=${inventario.totalPages - 1})}">&gt;&gt;</a>
+            <li th:if="${devoluciones.number + 1 < devoluciones.totalPages}" class="page-item">
+                <a class="page-link" th:href="@{/admin/seguimientoDevoluciones(page=${devoluciones.totalPages - 1})}">&gt;&gt;</a>
             </li>
         </ul>
     </nav>
