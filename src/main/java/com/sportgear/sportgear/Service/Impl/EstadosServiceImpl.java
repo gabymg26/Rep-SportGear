@@ -16,6 +16,6 @@ public class EstadosServiceImpl implements EstadosService {
   
     @Override
     public List<Estado> listarEstados() {
-        return (List<Estado>) estadosRepository.findAll();
+        return estadosRepository.findAll();
     }
 }
