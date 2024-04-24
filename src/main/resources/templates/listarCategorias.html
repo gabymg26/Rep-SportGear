@@ -96,6 +96,22 @@
     </div>
 </div>
 
+<div class="container text-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li th:if="${categorias.number > 0}" class="page-item">
+                <a class="page-link" th:href="@{/admin/listarCategorias(page=0)}">&lt;&lt;</a>
+            </li>
+            <li th:each="i : ${#numbers.sequence(0, categorias.totalPages - 1)}" class="page-item">
+                <a class="page-link" th:href="@{/admin/listarCategorias(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+            <li th:if="${categorias.number + 1 < categorias.totalPages}" class="page-item">
+                <a class="page-link" th:href="@{/admin/listarCategorias(page=${categorias.totalPages - 1})}">&gt;&gt;</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -4,6 +4,8 @@ import com.sportgear.sportgear.Model.CatImplementos;
 import com.sportgear.sportgear.Repository.CatImplementosRepository;
 import com.sportgear.sportgear.Service.CatImplementosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +27,8 @@ public class CatImplementosServiceImpl implements CatImplementosService {
     }
 
     @Override
-    public CatImplementos buscarPorId(Long id) {
-        return catImplementosRepository.findById(id).orElse(null);
+    public Page<CatImplementos> listarCategoriasPaginado(Pageable pageable) {
+        return catImplementosRepository.findAll(pageable);
     }
+
 }

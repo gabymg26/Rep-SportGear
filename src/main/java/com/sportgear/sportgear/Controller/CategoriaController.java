@@ -3,6 +3,9 @@ package com.sportgear.sportgear.Controller;
 import com.sportgear.sportgear.Model.CatImplementos;
 import com.sportgear.sportgear.Service.CatImplementosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +21,11 @@ public class CategoriaController {
     private CatImplementosService catImplementosService;
 
     @GetMapping("/listarCategorias")
-    public String listarCategorias(Model model){
-        List<CatImplementos> listCategorias = catImplementosService.listarCategorias();
+    public String listarCategorias(Model model, @RequestParam(defaultValue = "0") int page){
+        Pageable pageable = PageRequest.of(page, 10);
+        Page<CatImplementos> listadoInventario = catImplementosService.listarCategoriasPaginado(pageable);
         model.addAttribute("titulo","Lista de Categorias");
-        model.addAttribute("categorias",listCategorias);
+        model.addAttribute("categorias",listadoInventario);
         return "listarCategorias";
     }
 
