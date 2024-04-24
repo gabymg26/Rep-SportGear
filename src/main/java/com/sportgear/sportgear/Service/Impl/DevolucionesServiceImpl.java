@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Implementación del servicio para la gestión de devoluciones.
+ */
 @Service
 public class DevolucionesServiceImpl implements DevolucionesService {
 
@@ -21,11 +24,21 @@ public class DevolucionesServiceImpl implements DevolucionesService {
     @Autowired
     private InventarioRepository inventarioRepository;
 
+    /**
+     * Obtiene una lista de todas las devoluciones.
+     *
+     * @return Lista de devoluciones.
+     */
     @Override
     public List<Devoluciones> listarDevoluciones() {
         return devolucionRepository.findAll();
     }
 
+    /**
+     * Registra una solicitud de devolución y actualiza el inventario.
+     *
+     * @param devoluciones Objeto Devoluciones que representa la solicitud de devolución.
+     */
     @Override
     public void solicitudDevolucion(Devoluciones devoluciones) {
         Inventario inventario = devoluciones.getInventario();
@@ -42,6 +55,12 @@ public class DevolucionesServiceImpl implements DevolucionesService {
         devolucionRepository.save(devoluciones);
     }
 
+    /**
+     * Obtiene una lista paginada de devoluciones.
+     *
+     * @param pageable Objeto Pageable para la paginación.
+     * @return Página de devoluciones.
+     */
     @Override
     public Page<Devoluciones> listarDevolucionesPaginado(Pageable pageable) {
         return devolucionRepository.findAll(pageable);

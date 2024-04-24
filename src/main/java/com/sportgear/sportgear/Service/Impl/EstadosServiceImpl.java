@@ -8,12 +8,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Implementación del servicio para la gestión de estados.
+ */
 @Service
 public class EstadosServiceImpl implements EstadosService {
 
      @Autowired
      private EstadosRepository estadosRepository;
-  
+
+    /**
+     * Obtiene una lista de todos los estados.
+     *
+     * @return Lista de estados.
+     */
     @Override
     public List<Estado> listarEstados() {
         return estadosRepository.findAll();
