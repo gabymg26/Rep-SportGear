@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+/**
+ * Controlador para la gestión de devoluciones en el sistema.
+ */
 @Controller
 @RequestMapping("/admin")
 public class DevolucionesController {
@@ -20,6 +22,13 @@ public class DevolucionesController {
     @Autowired
     private DevolucionesService devolucionesService;
 
+    /**
+     * Maneja las solicitudes GET para mostrar el listado paginado de devoluciones.
+     *
+     * @param model El modelo utilizado para pasar datos a la vista.
+     * @param page El número de página solicitado (por defecto es 0).
+     * @return La vista para mostrar el listado de devoluciones.
+     */
     @GetMapping("/seguimientoDevoluciones")
     public String listarDevoluciones(Model model,@RequestParam(defaultValue = "0") int page){
         Pageable pageable = PageRequest.of(page, 10);
