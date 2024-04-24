@@ -34,6 +34,7 @@ public class Prestamos {
                 "idSolicitud=" + idSolicitud +
                 ", fechaPrestamo=" + fechaPrestamo +
                 ", codigoUsuario=" + codigoUsuario +
+                ", nombreUsuario=" + nombreUsuario +
                 ", inventario=" + inventario +
                 '}';
     }
