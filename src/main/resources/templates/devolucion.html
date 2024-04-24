@@ -57,8 +57,9 @@
             <form th:object="${devolucion}" th:action="@{/student/guadarDevolucion}" method="post">
                 <div class="form-group row mb-2">
                     <input type="hidden" th:field="*{idDevolucion}">
+                    <input type="hidden" th:field="*{nombreUsuario}" th:value="${#authentication.principal.username}">
                     <label class="control-label h5">Nombre Usuario: </label>
-                    <span sec:authentication="principal.username" class="form-control" style="background-color: #DFD4A6"></span>
+                    <input type="text" class="form-control" readonly th:value="${#authentication.principal.username}" style="background-color: #DFD4A6">
                 </div>
                 <div class="form-group row mb-2">
                     <label class="control-label h5" for="codigo">Codigo: </label>

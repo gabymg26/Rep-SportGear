@@ -74,7 +74,9 @@ public class EstudianteController {
     }
 
     @PostMapping("/guadarDevolucion")
-    public String procesarDevolucion(Devoluciones devoluciones,RedirectAttributes redirectAttributes) {
+    public String procesarDevolucion(Devoluciones devoluciones,Principal principal,RedirectAttributes redirectAttributes) {
+        String nombreUsuario = principal.getName();
+        devoluciones.setNombreUsuario(nombreUsuario);
         devolucionesService.solicitudDevolucion(devoluciones);
         redirectAttributes.addFlashAttribute("success","Devolución Exitosa");
         return "redirect:/student/panelPrincipal";
