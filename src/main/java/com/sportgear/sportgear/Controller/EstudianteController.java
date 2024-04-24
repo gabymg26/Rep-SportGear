@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -52,7 +53,9 @@ public class EstudianteController {
     }
 
     @PostMapping("/guardarPrestamos")
-    public String procesarSolicitud(Prestamos prestamo,RedirectAttributes redirectAttributes) {
+    public String procesarSolicitud(Prestamos prestamo, Principal principal, RedirectAttributes redirectAttributes) {
+        String nombreUsuario = principal.getName();
+        prestamo.setNombreUsuario(nombreUsuario);
         prestamosService.solicitudPrestamo(prestamo);
         redirectAttributes.addFlashAttribute("success","Solicitud Exitosa");
         return "redirect:/student/panelPrincipal";
