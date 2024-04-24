@@ -60,7 +60,7 @@ public class InventarioController {
         inventario.setDisponibilidad(disponibilidad);
         inventarioService.guardar(inventario);
         redirectAttributes.addFlashAttribute("success","Implemento guardado con éxito");
-        return "redirect:/admin/inventario";
+        return "redirect:/admin/inventarioImplementos";
     }
 
 
@@ -74,11 +74,11 @@ public class InventarioController {
 
             if(inventario == null){
                 redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
-                return "redirect:/admin/inventario";
+                return "redirect:/admin/inventarioImplementos";
             }
         }else {
             redirectAttributes.addFlashAttribute("error", "Atención: Error con el Id del implemento");
-            return "redirect:/admin/inventario";
+            return "redirect:/admin/inventarioImplementos";
         }
 
         List<CatImplementos> listCategorias = catImplementosService.listarCategorias();
@@ -100,15 +100,15 @@ public class InventarioController {
 
             if(inventario == null){
                 redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
-                return "redirect:/admin/inventario";
+                return "redirect:/admin/inventarioImplementos";
             }
         }else {
             redirectAttributes.addFlashAttribute("error", "Atención: El Id del implemento no existe!");
-            return "redirect:/admin/inventario";
+            return "redirect:/admin/inventarioImplementos";
         }
 
         inventarioService.eliminar(idInventario);
         redirectAttributes.addFlashAttribute("warning", "Implemento eliminado con éxito");
-        return "redirect:/admin/inventario";
+        return "redirect:/admin/inventarioImplementos";
     }
 }
