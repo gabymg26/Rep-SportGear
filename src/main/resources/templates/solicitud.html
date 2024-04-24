@@ -57,6 +57,7 @@
             <form th:object="${prestamo}" th:action="@{/student/guardarPrestamos}" method="post">
                 <div class="form-group row mb-2">
                     <input type="hidden" th:field="*{idSolicitud}">
+                    <input type="hidden" th:field="*{nombreUsuario}" th:value="${#authentication.principal.username}">
                     <label class="control-label h5">Nombre Usuario: </label>
                     <span sec:authentication="principal.username" class="form-control" style="background-color: #DFD4A6"></span>
                 </div>
