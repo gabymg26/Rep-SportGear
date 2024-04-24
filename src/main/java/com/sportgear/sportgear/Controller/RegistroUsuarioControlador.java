@@ -35,13 +35,13 @@ public class RegistroUsuarioControlador {
 
     @GetMapping
     public String mostrarFormularioDeRegistro(Model model) {
-        List<String> rolesDisponibles = Arrays.asList("Estudiante", "Administrativo"); // Suponiendo que tengas esta lista de roles
+        List<String> rolesDisponibles = Arrays.asList("Estudiante", "Administrativo");
         model.addAttribute("roles", rolesDisponibles);
         return "/registro";
     }
 
     @PostMapping
-    public String registrarCuentaDeUsuario(@ModelAttribute("usuario") UsuarioRegistroDTO registroDTO, @RequestParam("rol") String rol,@RequestParam("codigo") Long codigoUsuario, Model model) {
+    public String registrarCuentaDeUsuario(@ModelAttribute("usuario") UsuarioRegistroDTO registroDTO, @RequestParam("rol") String rol,Model model) {
         if (usuarioRepository.existsByEmail(registroDTO.getEmail())) {
             model.addAttribute("error", "El correo electrónico ya está registrado");
             List<String> rolesDisponibles = Arrays.asList("Estudiante", "Administrativo");

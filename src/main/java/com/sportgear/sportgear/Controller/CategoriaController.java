@@ -42,7 +42,7 @@ public class CategoriaController {
                          RedirectAttributes redirectAttributes){
         catImplementosService.guadar_categoria(catImplementos);
         redirectAttributes.addFlashAttribute("success","Categoria creada con Éxito");
-        return "redirect:/admin/crear_implemento";
+        return "redirect:/admin/crearImplemento";
     }
 
 }
