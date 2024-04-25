@@ -34,7 +34,7 @@ public class PrestamosController {
     public String listarPrestamos(Model model,@RequestParam(defaultValue = "0") int page){
         Pageable pageable = PageRequest.of(page, 10);
         Page<Prestamos> listadoPrestamos = prestamosService.listarPrestamosPaginado(pageable);
-        model.addAttribute("titulo","Seguimiento de Prestamos");
+        model.addAttribute("titulo","Seguimiento de Préstamos");
         model.addAttribute("prestamos",listadoPrestamos);
         return "listarPrestamos";
     }
