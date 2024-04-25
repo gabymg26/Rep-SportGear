@@ -87,7 +87,7 @@
                     <label class="control-label h5" for="estado">Estado: </label>
                     <select class="form-select" th:field="*{estadoDevolucion}" id="estado" style="background-color: #DFD4A6">
                         <option th:each="est:${estados}"
-                                th:value="${est.idEstado}"
+                                th:value="${est.nombreEstado}"
                                 th:text="${est.nombreEstado}"/>
                     </select>
                 </div>
