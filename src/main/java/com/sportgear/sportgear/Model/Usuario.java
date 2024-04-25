@@ -3,11 +3,13 @@ package com.sportgear.sportgear.Model;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.*;
 
+/**
+ * Clase que representa la entidad Usuario en la base de datos.
+ */
 
 @Entity
 @Getter
@@ -29,6 +31,12 @@ public class Usuario {
 
     private String password;
 
+    /**
+     * Relación Many-to-Many con la tabla de tipos de usuarios.
+     * Se utiliza FetchType.EAGER para cargar los datos relacionados de forma inmediata.
+     * Se utiliza CascadeType.ALL para aplicar todas las operaciones de persistencia (insertar, actualizar o eliminar) en cascada.
+     */
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "TipoUsuarios",
@@ -44,8 +52,16 @@ public class Usuario {
 
     private String programa;
 
+    /**
+     * Constructor alternativo de tipo genérico, brindando la opción de que puede tomar cualquier tipo de dato.
+     */
+
     public <T> Usuario(String nombre, String apellido, String email, String encode, List<T> list, Long codigo, Long telefono) {
     }
+
+    /**
+     * Constructor parametrizado para crear un objeto Usuario.
+     */
 
     public Usuario(String nombre, String apellido, String email, String password, Collection<Rol> roles, Long codigo, Long telefono, String programa) {
         this.nombre = nombre;
@@ -57,6 +73,10 @@ public class Usuario {
         this.telefono = telefono;
         this.programa = programa;
     }
+
+    /**
+     * Constructor por defecto de la clase Usuario.
+     */
 
     public Usuario() {
         super();
