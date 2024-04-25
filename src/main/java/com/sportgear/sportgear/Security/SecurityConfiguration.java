@@ -71,7 +71,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * @param http HttpSecurity.
      * @throws Exception Excepción en caso de error en la configuración.
      * authorizeRequests(): Indica que las solicitudes deben estar autorizadas según las reglas proporcionadas.
-     * antMatchers().permitAll(): Permite el acceso sin autenticación a ciertas URL, como las páginas de registro, los recursos estáticos (CSS, JS, imágenes), etc.
+     * antMatchers().permitAll(): Permite el acceso sin autenticación a ciertas URL, como las páginas de registro, los recursos estáticos (JS, imágenes), etc.
      * antMatchers().hasRole(): Requiere que los usuarios estén autenticados y tengan un cierto rol para acceder a ciertas URL. Por ejemplo, los usuarios con el rol "Estudiante" pueden acceder a las URL /estudiante/**.
      * anyRequest().authenticated(): Requiere que todas las demás solicitudes estén autenticadas.
      * formLogin(): Configura la autenticación mediante un formulario de inicio de sesión personalizado.
