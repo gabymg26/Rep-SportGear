@@ -122,13 +122,13 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li th:if="${inventario.number > 0}" class="page-item">
-                <a class="page-link" th:href="@{/admin/inventario(page=0)}">&lt;&lt;</a>
+                <a class="page-link" th:href="@{/admin/inventarioImplementos(page=0)}">&lt;&lt;</a>
             </li>
             <li th:each="i : ${#numbers.sequence(0, inventario.totalPages - 1)}" class="page-item">
-                <a class="page-link" th:href="@{/admin/inventario(page=${i})}" th:text="${i + 1}"></a>
+                <a class="page-link" th:href="@{/admin/inventarioImplementos(page=${i})}" th:text="${i + 1}"></a>
             </li>
             <li th:if="${inventario.number + 1 < inventario.totalPages}" class="page-item">
-                <a class="page-link" th:href="@{/admin/inventario(page=${inventario.totalPages - 1})}">&gt;&gt;</a>
+                <a class="page-link" th:href="@{/admin/inventarioImplementos(page=${inventario.totalPages - 1})}">&gt;&gt;</a>
             </li>
         </ul>
     </nav>
