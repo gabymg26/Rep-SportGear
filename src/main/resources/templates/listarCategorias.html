@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Categorias</title>
+    <link rel="shortcut icon" href="/Images/Usco.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: Poppins, sans-serif; font-weight: 300; font-style: normal;">
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #EDEFF0">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/admin/inventarioImplementos}">
+                <img src="/Images/Usco.svg" alt="Imagen de la Usco">
+            </a>
+
+            <p class="nav-item text-dark">
+                Bienvenid@, <span sec:authentication="principal.username" class="d-flex align-items-center"></span>
+            </p>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle-navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto d-flex align-items-end">
+                    <li class="nav-item active"><a class="nav-link text-dark" th:href="@{/admin/inventarioImplementos}">Inventario
+                    </a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" th:href="@{/admin/listarCategorias}">Categorias</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seguimiento
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/admin/seguimientoPrestamos}">Préstamos</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/seguimientoDevoluciones}">Devoluciones</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}">
+                        <img src="/Images/Logout.svg" alt="Imagen Cerrar Sesión" style="width: 45px">
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="alert alert-success alert-dismissible fade show" th:if="${success != null}">
+        <label th:text="${success}"></label>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" th:if="${error != null}">
+        <label th:text="${error}"></label>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show" th:if="${warning != null}">
+        <label th:text="${warning}"></label>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+</header>
+
+<div class="container text-center mt-5">
+    <h4 th:text="${titulo}"></h4>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="mt-5 col-md-2">
+            <table class="table table-bordered table-hover">
+                <thead class="text-center" style="background-color: #DFD4A6">
+                <tr>
+                    <th scope="col">Categoria</th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr th:each="cat:${categorias}">
+                        <td th:text="${cat.nombre}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li th:if="${categorias.number > 0}" class="page-item">
+                <a class="page-link" th:href="@{/admin/listarCategorias(page=0)}">&lt;&lt;</a>
+            </li>
+            <li th:each="i : ${#numbers.sequence(0, categorias.totalPages - 1)}" class="page-item">
+                <a class="page-link" th:href="@{/admin/listarCategorias(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+            <li th:if="${categorias.number + 1 < categorias.totalPages}" class="page-item">
+                <a class="page-link" th:href="@{/admin/listarCategorias(page=${categorias.totalPages - 1})}">&gt;&gt;</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
