@@ -31,7 +31,6 @@ public class RegistroUsuarioControlador {
      */
 
     public RegistroUsuarioControlador(UsuarioServicio usuarioServicio, UsuarioRepositorio usuarioRepository) {
-        super();
         this.usuarioServicio = usuarioServicio;
         this.usuarioRepository = usuarioRepository;
     }
