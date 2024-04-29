@@ -40,7 +40,7 @@ public class Rol {
      */
 
     public Rol() {
-        super();
+
     }
 
     /**

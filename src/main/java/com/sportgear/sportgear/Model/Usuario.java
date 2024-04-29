@@ -51,14 +51,7 @@ public class Usuario {
     private Long telefono;
 
     private String programa;
-
-    /**
-     * Constructor alternativo de tipo genérico, brindando la opción de que puede tomar cualquier tipo de dato.
-     */
-
-    public <T> Usuario(String nombre, String apellido, String email, String encode, List<T> list, Long codigo, Long telefono) {
-    }
-
+    
     /**
      * Constructor parametrizado para crear un objeto Usuario.
      */
@@ -79,6 +72,6 @@ public class Usuario {
      */
 
     public Usuario() {
-        super();
+
     }
 }
